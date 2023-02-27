@@ -155,7 +155,7 @@ async def play(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"https://te.legra.ph/file/4d71c4bd3802a77b9c597.jpg",
-                    caption=f"**❰ 𝗘𝘅𝗽𝗼𝗿𝘁 𝗣𝗹𝗮𝘆𝗲𝗿 𝗫 ❱ 𝗡𝗼𝘄 😄 𝗣𝗹𝗮𝘆𝗶𝗻𝗴 📀 𝗔𝘁 🤟\n\n👤𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆:{requester}**",
+                    caption=f"**❰ 𝗘𝘅𝗽𝗼𝗿𝘁 𝗣𝗹𝗮𝘆𝗲𝗿 ❱ 𝗡𝗼𝘄 😄 𝗣𝗹𝗮𝘆𝗶𝗻𝗴 📀 𝗔𝘁 🤟\n\n👤𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆:{requester}**",
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
              except Exception as e:
@@ -169,7 +169,7 @@ async def play(c: Client, m: Message):
         
         else:
             suhu = await m.reply_text(
-        f"**🔎 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 ...**"
+        f"**Downloading**\n\n100% ▓▓▓▓▓▓▓▓▓▓▓▓ 00%"
     )
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
@@ -185,12 +185,12 @@ async def play(c: Client, m: Message):
                 gcname = m.chat.title
                 videoid = search[4]
                 dlurl = f"https://www.youtubepp.com/watch?v={videoid}"
-                info = f"https://t.me/{BOT_USERNAME}?start=info_{videoid}"
+                info = f"https://t.me/SankiXMusicBot?start=info_{videoid}"
                 keyboard = stream_markup(user_id, dlurl)
                 playimg = await play_thumb(videoid)
                 queueimg = await queue_thumb(videoid)
                 await suhu.edit(
-                            f"**🔄 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠 ...**"
+                            f"**Downloader**\n\n**Title**: {title[:22]}\n\n100% ▓▓▓▓▓▓▓▓▓▓▓▓0%\n\n**Time Taken**: 00:00 Seconds\n\n**Converting Audio[FFmpeg Process]**"
                         )
                 format = "bestaudio"
                 abhi, ytlink = await ytdl(format, url)
@@ -211,7 +211,7 @@ async def play(c: Client, m: Message):
                     else:
                         try:
                             await suhu.edit(
-                            f"**🔄 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠 ...**"
+                            f"**Downloader**\n\n**Title**: {title[:22]}\n\n0% ████████████100%\n\n**Time Taken**: 00:00 Seconds\n\n**Converting Audio[FFmpeg Process]**"
                         )
                             await call_py.join_group_call(
                                 chat_id,
